@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class TrainConsistManagementApp {
@@ -102,24 +104,39 @@ public class TrainConsistManagementApp {
         System.out.println("  UC5 Preserve Insertion Order of Bogies  ");
         System.out.println("===================================\n");
 
-        // LinkedHashSet maintains insertion order + uniqueness
         Set<String> trainFormationSet = new LinkedHashSet<>();
-
-        // Attach bogies
         trainFormationSet.add("Engine");
         trainFormationSet.add("Sleeper");
         trainFormationSet.add("Cargo");
         trainFormationSet.add("Guard");
+        trainFormationSet.add("Sleeper"); // Duplicate
 
-        // Attempt duplicate attachment
-        trainFormationSet.add("Sleeper"); // Duplicate - will be ignored
-
-        // Display final formation
         System.out.println("Final Train Formation (Insertion Order Preserved):");
         System.out.println(trainFormationSet);
         System.out.println("\nNote:");
         System.out.println("Duplicate 'Sleeper' was ignored automatically.");
         System.out.println("\nUC5 operations completed successfully...");
+
+        // ===== UC6 =====
+        System.out.println("\n===================================");
+        System.out.println("  UC6 Map Bogie to Capacity  ");
+        System.out.println("===================================\n");
+
+        // Create HashMap to store bogie name and its capacity
+        Map<String, Integer> bogieCapacity = new HashMap<>();
+
+        // Map each bogie to its seating capacity
+        bogieCapacity.put("Sleeper", 72);
+        bogieCapacity.put("AC Chair", 64);
+        bogieCapacity.put("First Class", 18);
+
+        // Display each bogie with its capacity
+        System.out.println("Bogie Capacity Details:");
+        for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
+            System.out.println("Bogie: " + entry.getKey() +
+                    " | Capacity: " + entry.getValue() + " seats");
+        }
+
+        System.out.println("\nUC6 mapping completed successfully...");
     }
 }
-
