@@ -30,23 +30,3 @@ public class TrainConsistManagementApp {
         System.out.println("\nSystem ready for operations...");
     }
 }
-```
-
-        ---
-
-        ## 🔵 STEP 7 — Run the Program
-
-Click the **green ▶️ button** at top right!
-
-        ### ✅ Expected Output:
-        ```
-        ===================================
-Train Consist Management App
-===================================
-
-Train initialized successfully...
-Initial Bogie Count: 8
-Current Train Consist: [Bogie-1, Bogie-2, Bogie-3,
-Bogie-4, Bogie-5, Bogie-6, Bogie-7, Bogie-8]
-
-System ready for operations...
