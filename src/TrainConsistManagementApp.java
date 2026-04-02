@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -56,25 +57,49 @@ public class TrainConsistManagementApp {
         System.out.println("  UC3 Track Unique Bogie IDs  ");
         System.out.println("===================================\n");
 
-        // Create a Set to store unique bogie IDs
-        // HashSet stores only unique values
         Set<String> bogieIds = new HashSet<>();
-
-        // ADD IDs including duplicates
         bogieIds.add("BG101");
         bogieIds.add("BG102");
         bogieIds.add("BG103");
         bogieIds.add("BG104");
+        bogieIds.add("BG101"); // Duplicate
+        bogieIds.add("BG102"); // Duplicate
 
-        // Duplicate entries - HashSet will ignore these automatically
-        bogieIds.add("BG101"); // Duplicate entry
-        bogieIds.add("BG102"); // Duplicate entry
-
-        // Display unique IDs
         System.out.println("Bogie IDs After Insertion:");
         System.out.println(bogieIds);
         System.out.println("\nNote:");
         System.out.println("Duplicates are automatically ignored by HashSet.");
         System.out.println("\nUC3 uniqueness validation completed...");
+
+        // ===== UC4 =====
+        System.out.println("\n===================================");
+        System.out.println("  UC4 Maintain Ordered Bogie IDs  ");
+        System.out.println("===================================\n");
+
+        // Create a LinkedList to maintain insertion order
+        LinkedList<String> trainFormation = new LinkedList<>();
+
+        // Add bogies in order
+        trainFormation.add("Engine");
+        trainFormation.add("Sleeper");
+        trainFormation.add("AC");
+        trainFormation.add("Cargo");
+        trainFormation.add("Guard");
+
+        System.out.println("Initial Train Formation:");
+        System.out.println(trainFormation);
+
+        // Insert Pantry Car at position 2
+        trainFormation.add(2, "Pantry Car");
+        System.out.println("\nAfter Inserting Pantry Car at Position 2:");
+        System.out.println(trainFormation);
+
+        // Remove first and last bogie
+        trainFormation.removeFirst();
+        trainFormation.removeLast();
+        System.out.println("\nAfter Removing First and Last Bogie:");
+        System.out.println(trainFormation);
+
+        System.out.println("\nUC4 operations completed successfully...");
     }
 }
