@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -76,10 +77,7 @@ public class TrainConsistManagementApp {
         System.out.println("  UC4 Maintain Ordered Bogie IDs  ");
         System.out.println("===================================\n");
 
-        // Create a LinkedList to maintain insertion order
         LinkedList<String> trainFormation = new LinkedList<>();
-
-        // Add bogies in order
         trainFormation.add("Engine");
         trainFormation.add("Sleeper");
         trainFormation.add("AC");
@@ -89,17 +87,39 @@ public class TrainConsistManagementApp {
         System.out.println("Initial Train Formation:");
         System.out.println(trainFormation);
 
-        // Insert Pantry Car at position 2
         trainFormation.add(2, "Pantry Car");
         System.out.println("\nAfter Inserting Pantry Car at Position 2:");
         System.out.println(trainFormation);
 
-        // Remove first and last bogie
         trainFormation.removeFirst();
         trainFormation.removeLast();
         System.out.println("\nAfter Removing First and Last Bogie:");
         System.out.println(trainFormation);
-
         System.out.println("\nUC4 operations completed successfully...");
+
+        // ===== UC5 =====
+        System.out.println("\n===================================");
+        System.out.println("  UC5 Preserve Insertion Order of Bogies  ");
+        System.out.println("===================================\n");
+
+        // LinkedHashSet maintains insertion order + uniqueness
+        Set<String> trainFormationSet = new LinkedHashSet<>();
+
+        // Attach bogies
+        trainFormationSet.add("Engine");
+        trainFormationSet.add("Sleeper");
+        trainFormationSet.add("Cargo");
+        trainFormationSet.add("Guard");
+
+        // Attempt duplicate attachment
+        trainFormationSet.add("Sleeper"); // Duplicate - will be ignored
+
+        // Display final formation
+        System.out.println("Final Train Formation (Insertion Order Preserved):");
+        System.out.println(trainFormationSet);
+        System.out.println("\nNote:");
+        System.out.println("Duplicate 'Sleeper' was ignored automatically.");
+        System.out.println("\nUC5 operations completed successfully...");
     }
 }
+
