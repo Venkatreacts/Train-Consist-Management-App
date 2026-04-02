@@ -7,6 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 class Bogie {
@@ -222,8 +224,6 @@ public class TrainConsistManagementApp {
         System.out.println("  UC10 Count Total Seats in Train  ");
         System.out.println("===================================\n");
 
-        // Reuse bogieList from UC7
-        // map() extracts capacity, reduce() sums them all
         int totalSeats = bogieList.stream()
                 .map(b -> b.capacity)
                 .reduce(0, Integer::sum);
@@ -235,5 +235,40 @@ public class TrainConsistManagementApp {
 
         System.out.println("\nTotal Seating Capacity of Train: " + totalSeats + " seats");
         System.out.println("\nUC10 aggregation completed successfully...");
+
+        // ===== UC11 =====
+        System.out.println("\n===================================");
+        System.out.println("  UC11 Validate Train ID & Cargo Codes  ");
+        System.out.println("===================================\n");
+
+        // Define regex patterns
+        Pattern trainIdPattern = Pattern.compile("TRN-\\d{4}");
+        Pattern cargoCodePattern = Pattern.compile("PET-[A-Z]{2}");
+
+        // Test Train IDs
+        String[] trainIds = {"TRN-1234", "TRAIN12", "TRN12A", "1234-TRN"};
+        System.out.println("Train ID Validation:");
+        for (String id : trainIds) {
+            Matcher matcher = trainIdPattern.matcher(id);
+            if (matcher.matches()) {
+                System.out.println("  " + id + " -> VALID ✔");
+            } else {
+                System.out.println("  " + id + " -> INVALID ✘");
+            }
+        }
+
+        // Test Cargo Codes
+        String[] cargoCodes = {"PET-AB", "PET-ab", "PET123", "AB-PET"};
+        System.out.println("\nCargo Code Validation:");
+        for (String code : cargoCodes) {
+            Matcher matcher = cargoCodePattern.matcher(code);
+            if (matcher.matches()) {
+                System.out.println("  " + code + " -> VALID ✔");
+            } else {
+                System.out.println("  " + code + " -> INVALID ✘");
+            }
+        }
+
+        System.out.println("\nUC11 validation completed successfully...");
     }
 }
