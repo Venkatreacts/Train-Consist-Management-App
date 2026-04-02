@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class TrainConsistManagementApp {
 
@@ -30,30 +32,49 @@ public class TrainConsistManagementApp {
         System.out.println("  UC2 Add Passenger Bogies to Train  ");
         System.out.println("===================================\n");
 
-        // Create an ArrayList to hold passenger bogies
         List<String> passengerBogies = new ArrayList<>();
-
-        // CREATE - Add bogies
         passengerBogies.add("Sleeper");
         passengerBogies.add("AC Chair");
         passengerBogies.add("First Class");
 
-        // READ - Display after adding
         System.out.println("After Adding Bogies:");
         System.out.println("Passenger Bogies: " + passengerBogies);
 
-        // DELETE - Remove a bogie
         passengerBogies.remove("AC Chair");
         System.out.println("\nAfter Removing 'AC Chair':");
         System.out.println("Passenger Bogies: " + passengerBogies);
 
-        // CHECK - contains()
         System.out.println("\nChecking if 'Sleeper' exists:");
         System.out.println("Contains Sleeper?: " + passengerBogies.contains("Sleeper"));
 
-        // Final state
         System.out.println("\nFinal Train Passenger Consist:");
         System.out.println(passengerBogies);
         System.out.println("\nUC2 operations completed successfully...");
+
+        // ===== UC3 =====
+        System.out.println("\n===================================");
+        System.out.println("  UC3 Track Unique Bogie IDs  ");
+        System.out.println("===================================\n");
+
+        // Create a Set to store unique bogie IDs
+        // HashSet stores only unique values
+        Set<String> bogieIds = new HashSet<>();
+
+        // ADD IDs including duplicates
+        bogieIds.add("BG101");
+        bogieIds.add("BG102");
+        bogieIds.add("BG103");
+        bogieIds.add("BG104");
+
+        // Duplicate entries - HashSet will ignore these automatically
+        bogieIds.add("BG101"); // Duplicate entry
+        bogieIds.add("BG102"); // Duplicate entry
+
+        // Display unique IDs
+        System.out.println("Bogie IDs After Insertion:");
+        System.out.println(bogieIds);
+        System.out.println("\nNote:");
+        System.out.println("Duplicates are automatically ignored by HashSet.");
+        System.out.println("\nUC3 uniqueness validation completed...");
     }
 }
